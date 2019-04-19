@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('pages/home');
 });
+
+Route::get('/manual', function () {
+    return view('pages/manual');
+})->name('manual');
+Route::get('/manual/helpers', function () {
+    return view('pages/manual/helpers');
+})->name('manual.helpers');
+Route::get('/manual/hooks', function () {
+    return view('pages/manual/hooks');
+})->name('manual.hooks');
