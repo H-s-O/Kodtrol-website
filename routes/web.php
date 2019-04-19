@@ -21,6 +21,9 @@ Route::get('/manual', function () {
 Route::get('/manual/helpers', function () {
     return view('pages/manual/helpers');
 })->name('manual.helpers');
+Route::get('/manual/objects', function () {
+    return view('pages/manual/objects');
+})->name('manual.objects');
 Route::get('/manual/hooks', function () {
     return view('pages/manual/hooks');
 })->name('manual.hooks');

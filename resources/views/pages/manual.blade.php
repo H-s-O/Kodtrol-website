@@ -1,22 +1,31 @@
 @extends('master')
 
-@section('head')
+@push('head')
 <style>
 .manual-container { position: relative; }
-.manual-container .sidecol { width: 25%; position: absolute; left: 0; border-right: 2px #AAA solid; }
+.manual-container .sidecol { width: 25%; position: absolute; left: 0; }
 .manual-container .sidecol li > p { font-weight: bold; }
-.manual-container .contentcol { width: 75%; position: absolute; left: 25%; padding: 0 1em 0 1em; }
+.manual-container .contentcol { width: 75%; position: absolute; left: 25%; padding: 0 2em 0 2em; border-left: 1px #AAA solid; }
 
 .def-group { margin-bottom: 3em; }
+.def-table-container { border-left: 2px #AAA solid; padding-left: 1em; }
 .method-def { display:block; font-size: 2em; margin-bottom: 0.5em; }
 .code-example { white-space:pre; display:block; padding: 1em; background-color: #EEE; }
 .args-list { margin: 0; padding-left: 1em; }
+.type { font-style: italic; color:darkorange; }
+.var { color:darkslategrey; }
+.func { color:darkred; }
 
 table { border-collapse: collapse; }
-table tr td { padding: 1em 0 1em; vertical-align: top; border-bottom: 1px #AAA solid; }
-table tr > td:first-child { padding-right: 1em; }
+table tr td { padding: 1em 0 1em; vertical-align: top; }
+table tr:not(:last-child) td { border-bottom: 1px #AAA solid; }
+table tr td:first-child { padding-right: 1em; font-weight: bold; }
+
+code { font-size: 1.2em; }
+
+hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
 </style>
-@endsection
+@endpush
 
 @section('content')
 <div class="manual-container">
@@ -38,9 +47,9 @@ table tr > td:first-child { padding-right: 1em; }
                 <p>Scripting</p>
                 <ul>
                     <li>
-                        <p>Objects</p>
+                        <p><a href="{{ route('manual.objects') }}">Objects</a></p>
                         <ul>
-                            <li>Device</li>
+                            <li><a href="{{ route('manual.objects') }}#Device">Device</a></li>
                         </ul>
                     </li>
                     <li>
