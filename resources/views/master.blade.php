@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kodtrol</title>
         <style>
-            body { font-family: Helvetica, sans-serif; }
+            body { font-family: Helvetica, sans-serif; font-size: 0.9em; }
             body * { box-sizing: border-box; }
             .site-title { margin:0; float: left; position: relative; }
             .site-title small { color: grey; margin-left: 0.2em; }
