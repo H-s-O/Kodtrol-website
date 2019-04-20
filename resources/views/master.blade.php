@@ -9,6 +9,7 @@
             body * { box-sizing: border-box; }
             .site-title small { color: grey; margin-left: 0.2em; }
             small { color: grey; }
+            footer { padding: 1em; color: grey; text-align: center; }
         </style>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         @stack('head')
@@ -17,6 +18,9 @@
         <h1 class="site-title">Kodtrol<small>show control app</small></h1>
         <p><a class="github-button" href="https://github.com/H-s-O/Kodtrol" data-size="large" aria-label="View H-s-O/Kodtrol on GitHub">View on GitHub</a></p>
         @yield('content')
+        <footer>
+            A project by <a href="https://tekunika.ca" aria-label="TEKUNIKA" target="_blank">TEKUNIKA</a>
+        </footer>
         @stack('body')
     </body>
 </html>
