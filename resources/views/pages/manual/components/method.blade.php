@@ -45,9 +45,7 @@
             <tr>
                 <td>Example</td>
                 <td>
-                    <code class="code-example">
-                        {{ $example }}
-                    </code>
+<code class="code-example">{{ $example }}</code>
                 </td>
             </tr>
             @endif
