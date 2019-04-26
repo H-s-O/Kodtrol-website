@@ -11,14 +11,15 @@
 .manual-container .contentcol { flex-grow: 1; padding: 0 1em 0 2em; border-left: 1px #AAA solid; }
 .manual-container .contentcol h1:first-child { margin: 0 0 0em 0; }
 
-.def-group { margin-bottom: 3em; }
-.def-table-container { border-left: 2px #AAA solid; padding-left: 1em; background-color: #F5F5F5; }
-.method-def { display:block; font-size: 2em; margin-bottom: 0.5em; font-weight: bold; white-space: nowrap; }
+.def-group { margin-bottom: 3em; border-left: 2px #AAA solid; padding-left: 1em; }
+.def-table-container { padding: 0 1em 0 1em; background-color: #F5F5F5; }
+.method-def { display:block; font-size: 2em; margin-bottom: 0.5em; font-weight: bold; white-space: nowrap; background-color: #EEE; padding: 0.5em; }
 .code-example { white-space:pre; display:block; padding: 1em; background-color: #EEE; }
 .args-list { margin: 0; padding-left: 1em; }
 .type { font-style: italic; color:darkorange; }
 .var { color:darkslategrey; }
 .func { color:darkred; }
+.screenshot { width: auto; max-height: 400px; }
 
 table { border-collapse: collapse; }
 table tr td { padding: 1em 0 1em; vertical-align: top; }
@@ -41,7 +42,7 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
                 <li>
                     <p>Interface</p>
                     <ul>
-                        <li>Devices browser</li>
+                        <li><a href="{{ route('manual.devices_browser') }}">Devices browser</a></li>
                         <li>Scripts browser</li>
                         <li>Script editor</li>
                         <li>Timelines & Boards browser</li>

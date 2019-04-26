@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::component('pages.manual.components.method', 'method');
+        Blade::component('pages.manual.components.screenshots', 'screenshots');
     }
 }

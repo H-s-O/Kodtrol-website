@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('/manual', function () {
     return view('pages/manual');
 })->name('manual');
+Route::get('/manual/device-browser', function () {
+    return view('pages/manual/devices_browser');
+})->name('manual.devices_browser');
 Route::get('/manual/helpers', function () {
     return view('pages/manual/helpers');
 })->name('manual.helpers');
