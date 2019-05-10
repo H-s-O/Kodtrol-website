@@ -42,7 +42,13 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
                 <li>
                     <p>Interface</p>
                     <ul>
-                        <li><a href="{{ route('manual.devices_browser') }}">Devices browser</a></li>
+                        <li>
+                            <p><a href="{{ route('manual.devices') }}">Devices</a></p>
+                            <ul>
+                                <li><a href="{{ route('manual.devices') }}#devices-browser">Devices browser</a>
+                                <li><a href="{{ route('manual.devices') }}#add-device-dialog">Add device dialog</a>
+                            </ul>
+                        </li>
                         <li>Scripts browser</li>
                         <li>Script editor</li>
                         <li>Timelines & Boards browser</li>
