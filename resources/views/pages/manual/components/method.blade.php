@@ -24,7 +24,7 @@
                             @else
                             <span class="type">{{ $argInfo['type'] }}</span>
                             @endif) @isset($argInfo['timeline']) <small>timeline only</small>@endif
-                            <p>{{ $argInfo['desc'] }}</p>
+                            <p>{!! $argInfo['desc'] !!}</p>
                         </li>
                         @endforeach
                     </ul>
@@ -36,7 +36,7 @@
                 <td>
                     <span class="type">{{ $returnType }}</span>
                     @isset($returnDesc)
-                    {{ $returnDesc }}
+                    {!! $returnDesc !!}
                     @endif
                 </td>
             </tr>
@@ -45,7 +45,7 @@
             <tr>
                 <td>Example</td>
                 <td>
-<code class="code-example">{{ $example }}</code>
+<code class="code-example">{!! $example !!}</code>
                 </td>
             </tr>
             @endif

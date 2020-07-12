@@ -78,25 +78,7 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
                         <li>
                             <p><a href="{{ route('manual.helpers') }}">Helpers</a></p>
                             <ul>
-                                <li><a href="{{ route('manual.helpers') }}#isEven">isEven</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#isOdd">isOdd</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#clamp">clamp</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#map">map</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#mix">mix</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#tri">tri</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#randomBetween">randomBetween</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#randomIndex">randomIndex</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#randomIndexWhere">randomIndexWhere</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#randomValue">randomValue</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#randomValueWhere">randomValueWhere</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#isBeatDivision">isBeatDivision</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#step">step</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#smoothFollow">smoothFollow</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#smoothReset">smoothReset</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#smoothValue">smoothValue</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#smoothVarName">smoothVarName</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#backInOut">backInOut</a></li>
-                                <li><a href="{{ route('manual.helpers') }}#bounceOut">bounceOut</a></li>
+                                @include('pages/manual/helpers_menu_generated')
                             </ul>
                         </li>
                     </ul>
