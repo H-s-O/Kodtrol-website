@@ -68,7 +68,7 @@ class GenerateHelpersPage extends Command
             $functionTemplate = '<a name="'.$functionData->name.'"></a>'."\n";
             $functionTemplate .= '@method(["name" => "'.$functionData->name.'",';
             if (isset($functionData->description)) {
-                $functionTemplate .= '"desc" => "'.$this->codify($functionData->description).'",';
+                $functionTemplate .= '"description" => "'.$this->codify($functionData->description).'",';
             }
             if (isset($functionData->params)) {
                 $functionTemplate .= array_reduce($functionData->params, function($template, $paramData) {
@@ -102,6 +102,6 @@ class GenerateHelpersPage extends Command
 
     private function codify($text)
     {
-        return preg_replace('/`(.*?)`/', '<code>$1</code>', addslashes($text));
+        return preg_replace('/`(.*?)`/', '<code>$1</code>', addcslashes($text, '"'));
     }
 }

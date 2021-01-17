@@ -13,7 +13,9 @@
 
 .def-group { margin-bottom: 3em; border-left: 2px #AAA solid; padding-left: 1em; }
 .def-table-container { padding: 0 1em 0 1em; background-color: #F5F5F5; }
-.method-def { display:block; font-size: 2em; margin-bottom: 0.5em; font-weight: bold; white-space: nowrap; background-color: #EEE; padding: 0.5em; }
+.method-def { margin-bottom: 0.5em; background-color: #EEE; padding: 1em; }
+.method-signature { display:block; font-size: 2em; font-weight: bold; white-space: nowrap; }
+.method-desc { margin-bottom: 0; margin-top: 1em; }
 .code-example { white-space:pre; display:block; padding: 1em; background-color: #EEE; }
 .args-list { margin: 0; padding-left: 1em; }
 .type { font-style: italic; color:darkorange; }

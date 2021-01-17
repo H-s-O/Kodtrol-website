@@ -1,13 +1,15 @@
 <div class="def-group">
-    <code class="method-def">
-        <span class="func">{{ $name }}</span>
-        (@foreach ($args as $arg => $argInfo)
-        <span class="var">{{ $arg }}</span>@if (!$loop->last),@endif
-        @endforeach)
-    </code>
-    @isset($description)
-    {{ $description }}
-    @endif
+    <div class="method-def">
+        <code class="method-signature">
+            <span class="func">{{ $name }}</span>
+            (@foreach ($args as $arg => $argInfo)
+            <span class="var">{{ $arg }}</span>@if (!$loop->last),@endif
+            @endforeach)
+        </code>
+        @isset($description)
+        <p class="method-desc">{{ $description }}</p>
+        @endif
+    </div>
     <div class="def-table-container">
         <table>
             <tr>
