@@ -25,7 +25,10 @@
                             @endforeach
                             @else
                             <span class="type">{{ $argInfo['type'] }}</span>
-                            @endif) @isset($argInfo['timeline']) <small>timeline only</small>@endif
+                            @endif)
+                            @if(isset($argInfo['timeline']) || isset($argInfo['board']))
+                            <small>@isset($argInfo['timeline']) timelines @endif @if(isset($argInfo['timeline']) && isset($argInfo['board'])) and @endif @isset($argInfo['board']) boards @endif only</small>
+                            @endif
                             <p>{!! $argInfo['desc'] !!}</p>
                         </li>
                         @endforeach

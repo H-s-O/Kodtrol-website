@@ -27,7 +27,7 @@
         </header>
         @yield('content')
         <footer>
-            A project by <a href="https://tekunika.ca" aria-label="TEKUNIKA" target="_blank">TEKUNIKA</a>
+            An app by <a href="https://tekunika.ca" aria-label="TEKUNIKA" target="_blank">TEKUNIKA</a>
         </footer>
         @stack('body')
     </body>

@@ -70,9 +70,10 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
                         <li>
                             <p><a href="{{ route('manual.hooks') }}">Hooks</a></p>
                             <ul>
-                                <li><a href="{{ route('manual.hooks') }}#setup">setup</a></li>
-                                <li><a href="{{ route('manual.hooks') }}#start">start</a></li>
                                 <li><a href="{{ route('manual.hooks') }}#frame">frame</a></li>
+                                <li><a href="{{ route('manual.hooks') }}#start">start</a></li>
+                                <li><a href="{{ route('manual.hooks') }}#leadInFrame">leadInFrame</a></li>
+                                <li><a href="{{ route('manual.hooks') }}#leadOutFrame">leadOutFrame</a></li>
                                 <li><a href="{{ route('manual.hooks') }}#beat">beat</a></li>
                                 <li><a href="{{ route('manual.hooks') }}#input">input</a></li>
                             </ul>

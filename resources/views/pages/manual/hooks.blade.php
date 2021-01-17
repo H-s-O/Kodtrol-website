@@ -4,40 +4,58 @@
 <h1><small>Scripting</small></h3>
 
 <h1>Hooks</h1>
-<p>Hooks are functions you implement to define how a script reacts to specific events.</p>
+<p>Hooks are functions you write to make your scripts respond to various events while it is executed by Kodtrol.</p>
 
 <hr>
 
-<a name="setup"></a>
+<a name="frame"></a>
 @method([
-    'name' => 'setup',
+    'name' => 'frame',
     'args' => [
         'devices' => [
             'type' => 'array',
-            'desc' => 'a list of Devices that are associated to the script',
+            'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
+        ],
+        'data' => [
+            'type' => 'mixed',
+            'desc' => 'the current script data',
+        ],
+        'blockInfo' => [
+            'type' => 'object',
+            'desc' => 'infos related to the scripts timing and progression',
+            'timeline' => true,
+            'board' => true,
+        ],
+        'triggers' => [
+            'type' => 'object',
+            'desc' => 'timeline trigger(s) occuring at the time this hook is run',
+            'timeline' => true,
+        ],
+        'curves' => [
+            'type' => 'object',
+            'desc' => 'timeline curve(s) occuring at the time this hook is run',
+            'timeline' => true,
         ],
     ],
     'returnType' => 'mixed',
 ])
 @slot('description')
-<p>Optional hook.</p>
-<p>When running in a timeline, this hook is continously executed on each render frame for half a second before the script starts
-    (except if the script starts less than half a second after the beginning of a timeline).</p>
-<p>When running standalone, this hook is executed once, immediately before <a href="#start">start()</a>.</p>
-<p>You can use this hook to prepare certain device channels, such as pan and tilt, before the
-        actual script execution begins.</p>
+<p>When the script is in a timeline, this hook is continously executed on each frame for the whole duration of the script block.</p>
+<p>When the script is in a board, this hook is continously executed on each frame as long as the script block is active.</p>
+<p>When running standalone, this hook is endlessly executed on each frame.</p>
+<p>This hook is used to set and output device data.</p>
 @endslot
 @slot('returnDesc')
 <p>Optional; any value returned by this hook will be saved as script data.</p>
 @endslot
 @slot('example')
-function setup(devices) {
+function frame(devices, data, blockInfo, triggers, curves) {
     devices.forEach((device) => {
-        device.setPan(127);
+        device.setDimmer(255);
     });
 
     // Optionally return script data
-    // return { foo: 1 };
+    // return { foo: 42 };
 }
 @endslot
 @endcomponent
@@ -48,29 +66,14 @@ function setup(devices) {
     'args' => [
         'devices' => [
             'type' => 'array',
-            'desc' => 'a list of Devices that are associated to the script',
-        ],
-        'data' => [
-            'type' => 'mixed',
-            'desc' => 'the current script data',
-        ],
-        'triggers' => [
-            'type' => 'object',
-            'desc' => 'a structure of currently occuring timeline triggers',
-            'timeline' => true,
-        ],
-        'curves' => [
-            'type' => 'object',
-            'desc' => 'a structure of currently occuring timeline curves',
-            'timeline' => true,
+            'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
         ],
     ],
     'returnType' => 'mixed',
 ])
 @slot('description')
-<p>Optional hook.</p>
-<p>This hook is executed once, immediately before the first execution of <a href="#frame">frame()</a>.</p>
-<p>You can use this hook to prepare certain device channels, such as pan and tilt, before the
+<p>This hook is executed once, immediately before the first execution of any other hook.</p>
+<p>You can use this hook to prepare certain device data, before the
         actual script execution begins.</p>
 @endslot
 @slot('returnDesc')
@@ -88,13 +91,13 @@ function start(devices, data, triggers, curves) {
 @endslot
 @endcomponent
 
-<a name="frame"></a>
+<a name="leadInFrame"></a>
 @method([
-    'name' => 'frame',
+    'name' => 'leadInFrame',
     'args' => [
         'devices' => [
             'type' => 'array',
-            'desc' => 'a list of Devices that are associated to the script',
+            'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
         ],
         'data' => [
             'type' => 'mixed',
@@ -102,39 +105,92 @@ function start(devices, data, triggers, curves) {
         ],
         'blockInfo' => [
             'type' => 'object',
-            'desc' => 'a structure of infos related to the scripts timing on the timeline',
+            'desc' => 'infos related to the scripts timing and progression',
             'timeline' => true,
+            'board' => true,
         ],
         'triggers' => [
             'type' => 'object',
-            'desc' => 'a structure of currently occuring timeline triggers',
+            'desc' => 'timeline trigger(s) occuring at the time this hook is run',
             'timeline' => true,
         ],
         'curves' => [
             'type' => 'object',
-            'desc' => 'a structure of currently occuring timeline curves',
+            'desc' => 'timeline curve(s) occuring at the time this hook is run',
             'timeline' => true,
         ],
     ],
     'returnType' => 'mixed',
 ])
 @slot('description')
-<p><strong>Mandatory</strong> hook.</p>
-<p>When in a timeline, this hook is continously executed on each render frame for the whole duration of the script.</p>
-<p>When running standalone, this hook is endlessly executed on each render frame.</p>
-<p>This hook is used to do the main rendering to your devices.</p>
+<p>When the script is in a timeline, this hook is continously executed on each frame for the whole duration of the script block.</p>
+<p>When the script is in a board, this hook is continously executed on each frame as long as the script block is active.</p>
+<p>When running standalone, this hook is endlessly executed on each frame.</p>
+<p>This hook is used to set and output device data.</p>
 @endslot
 @slot('returnDesc')
 <p>Optional; any value returned by this hook will be saved as script data.</p>
 @endslot
 @slot('example')
-function frame(devices, data, blockInfo, triggers, curves) {
+function setup(devices) {
     devices.forEach((device) => {
-        device.setDimmer(255);
+        device.setPan(127);
     });
 
     // Optionally return script data
-    // return { foo: 42 };
+    // return { foo: 1 };
+}
+@endslot
+@endcomponent
+
+<a name="leadOutFrame"></a>
+@method([
+    'name' => 'leadOutFrame',
+    'args' => [
+        'devices' => [
+            'type' => 'array',
+            'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
+        ],
+        'data' => [
+            'type' => 'mixed',
+            'desc' => 'the current script data',
+        ],
+        'blockInfo' => [
+            'type' => 'object',
+            'desc' => 'infos related to the scripts timing and progression',
+            'timeline' => true,
+            'board' => true,
+        ],
+        'triggers' => [
+            'type' => 'object',
+            'desc' => 'timeline trigger(s) occuring at the time this hook is run',
+            'timeline' => true,
+        ],
+        'curves' => [
+            'type' => 'object',
+            'desc' => 'timeline curve(s) occuring at the time this hook is run',
+            'timeline' => true,
+        ],
+    ],
+    'returnType' => 'mixed',
+])
+@slot('description')
+<p>When the script is in a timeline, this hook is continously executed on each frame for the whole duration of the script block.</p>
+<p>When the script is in a board, this hook is continously executed on each frame as long as the script block is active.</p>
+<p>When running standalone, this hook is endlessly executed on each frame.</p>
+<p>This hook is used to set and output device data.</p>
+@endslot
+@slot('returnDesc')
+<p>Optional; any value returned by this hook will be saved as script data.</p>
+@endslot
+@slot('example')
+function setup(devices) {
+    devices.forEach((device) => {
+        device.setPan(127);
+    });
+
+    // Optionally return script data
+    // return { foo: 1 };
 }
 @endslot
 @endcomponent
@@ -159,8 +215,7 @@ function frame(devices, data, blockInfo, triggers, curves) {
     'returnType' => 'mixed',
 ])
 @slot('description')
-<p>Optional hook.</p>
-<p>This hook is executed on each 1/24th of a beat, respective of the set tempo.</p>
+<p>This hook is executed on each 1/24th of a beat, respective of the set tempo of the timeline, board or standalone setting.</p>
 <p>Use this hook to create beat-based automations and set or alter device variables and script data; you can then use the values you set
     in the <a href="#frame">frame()</a> hook. You cannot set device output content within this hook.</p>
 @endslot
@@ -205,7 +260,6 @@ function beat(devices, beatInfo, data) {
     'returnType' => 'mixed',
 ])
 @slot('description')
-<p>Optional hook.</p>
 <p>This hook is executed each time input content is received from any of your active inputs.</p>
 <p>Use this hook to create interactive automations and set or alter device variables and script data; you can then use the values you set
     in the <a href="#frame">frame()</a> hook. You cannot set device output content within this hook.</p>
