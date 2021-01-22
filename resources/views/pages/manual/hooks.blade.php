@@ -5,6 +5,21 @@
 
 <h1>Hooks</h1>
 <p>Hooks are functions you write to make your scripts respond to various events while it is executed by Kodtrol.</p>
+<p>Hooks must be written as top-level functions in your scripts in order to be valid and properly executed:</p>
+<code class="code-example">// Good
+function frame(devices) {
+}
+
+// Bad
+function myOtherFunction() {
+    function frame(devices) {
+    }
+}
+
+// Also bad
+var frame = function(devices) {
+}
+</code>
 
 <hr>
 

@@ -8,11 +8,14 @@ If <code>value</code> is greater than <code>max</code>, return <code>max</code>.
 Otherwise, returns <code>value</code>.</p>
 @endslot
 @slot("example")
-isEven(1)
-// Returns true
+clamp(1, 2, 6)
+// Returns 2
 
-isEven(2)
-// Returns false
+clamp(10, 2, 6)
+// Returns 6
+
+clamp(-42, -100, 0)
+// Return -42
 @endslot
 @endcomponent
 

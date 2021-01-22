@@ -29,7 +29,7 @@
 <h2 id="add-device-dialog">Add device dialog</h2>
 
 <div>
-    <img class="screenshot" src="/images/screenshots/add_device_modal.png"/>
+    <img class="screenshot" src="/images/screenshots/add_device_dialog.png"/>
 </div>
 
 @endsection

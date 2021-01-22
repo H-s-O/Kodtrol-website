@@ -44,42 +44,69 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
                 <li>
                     <p>Interface</p>
                     <ul>
+                        <li><a href="{{ route('manual.interface.project_config') }}">Project configuration dialog</a></li>
                         <li>
-                            <p><a href="{{ route('manual.devices') }}">Devices</a></p>
+                            <p><a href="{{ route('manual.interface.devices') }}">Devices</a></p>
                             <ul>
-                                <li><a href="{{ route('manual.devices') }}#devices-browser">Devices browser</a>
-                                <li><a href="{{ route('manual.devices') }}#add-device-dialog">Add device dialog</a>
+                                <li><a href="{{ route('manual.interface.devices') }}#devices-browser">Devices browser</a>
+                                <li><a href="{{ route('manual.interface.devices') }}#add-device-dialog">Add device dialog</a>
                             </ul>
                         </li>
-                        <li>Scripts browser</li>
-                        <li>Script editor</li>
-                        <li>Timelines & Boards browser</li>
-                        <li>Timeline editor</li>
-                        <li>Board editor</li>
+                        <li>
+                            <p><a href="{{ route('manual.interface.scripts') }}">Scripts</a></p>
+                            <ul>
+                                <li><a href="{{ route('manual.interface.scripts') }}#scripts-browser">Scripts browser</a></li>
+                                <li><a href="{{ route('manual.interface.scripts') }}#add-script-dialog">Add script dialog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('manual.interface.scripts.editor') }}">Script editor</a></li>
+                        <li>
+                            <p><a href="{{ route('manual.interface.medias') }}">Medias</a></p>
+                            <ul>
+                                <li><a href="{{ route('manual.interface.medias') }}#medias-browser">Medias browser</a></li>
+                                <li><a href="{{ route('manual.interface.medias') }}#add-script-dialog">Add media dialog</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p><a href="{{ route('manual.interface.timelines') }}">Timelines</a></p>
+                            <ul>
+                                <li><a href="{{ route('manual.interface.timelines') }}#timelines-browser">Timelines browser</a></li>
+                                <li><a href="{{ route('manual.interface.timelines') }}#add-timeline-dialog">Add timeline dialog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('manual.interface.timelines.editor') }}">Timeline editor</a></li>
+                        <li>
+                            <p><a href="{{ route('manual.interface.boards') }}">Boards</a></p>
+                            <ul>
+                                <li><a href="{{ route('manual.interface.boards') }}#boards-browser">Boards browser</a></li>
+                                <li><a href="{{ route('manual.interface.boards') }}#add-board-dialog">Add board dialog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('manual.interface.console_window') }}">Console window</a></li>
                     </ul>
                 </li>
                 <li>
                     <p>Scripting</p>
                     <ul>
                         <li>
-                            <p><a href="{{ route('manual.objects') }}">Objects</a></p>
+                            <p><a href="{{ route('manual.scripting.objects') }}">Objects</a></p>
                             <ul>
-                                <li><a href="{{ route('manual.objects') }}#Device">Device</a></li>
+                                <li><a href="{{ route('manual.scripting.objects') }}#Device">Device</a></li>
                             </ul>
                         </li>
                         <li>
-                            <p><a href="{{ route('manual.hooks') }}">Hooks</a></p>
+                            <p><a href="{{ route('manual.scripting.hooks') }}">Hooks</a></p>
                             <ul>
-                                <li><a href="{{ route('manual.hooks') }}#frame">frame</a></li>
-                                <li><a href="{{ route('manual.hooks') }}#start">start</a></li>
-                                <li><a href="{{ route('manual.hooks') }}#leadInFrame">leadInFrame</a></li>
-                                <li><a href="{{ route('manual.hooks') }}#leadOutFrame">leadOutFrame</a></li>
-                                <li><a href="{{ route('manual.hooks') }}#beat">beat</a></li>
-                                <li><a href="{{ route('manual.hooks') }}#input">input</a></li>
+                                <li><a href="{{ route('manual.scripting.hooks') }}#frame">frame</a></li>
+                                <li><a href="{{ route('manual.scripting.hooks') }}#start">start</a></li>
+                                <li><a href="{{ route('manual.scripting.hooks') }}#leadInFrame">leadInFrame</a></li>
+                                <li><a href="{{ route('manual.scripting.hooks') }}#leadOutFrame">leadOutFrame</a></li>
+                                <li><a href="{{ route('manual.scripting.hooks') }}#beat">beat</a></li>
+                                <li><a href="{{ route('manual.scripting.hooks') }}#input">input</a></li>
                             </ul>
                         </li>
                         <li>
-                            <p><a href="{{ route('manual.helpers') }}">Helpers</a></p>
+                            <p><a href="{{ route('manual.scripting.helpers') }}">Helpers</a></p>
                             <ul>
                                 @include('pages/manual/helpers_menu_generated')
                             </ul>
@@ -90,11 +117,6 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
         </div>
     </div>
     <div class="contentcol">
-        @section('manualContent')
-        <h1>Introduction</h1>
-        <p>Kodtrol is all about scripting. By having low-level access to your devices, you are free to code the exact behaviors, animations and
-            effects you want.</p>
-        @endsection
         @yield('manualContent')
     </div>
 </div>
