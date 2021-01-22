@@ -4,12 +4,12 @@
 <h1><small>Interface</small></h1>
 <h1>Medias</h1>
 
-<h2 id="scripts-browser">Medias browser</h2>
+<h2 id="medias-browser">Medias browser</h2>
 
-<p>Allows you to create new scripts and lists existing scripts.</p>
+<p>Allows you to create new medias and lists existing medias.</p>
 
 <div>
-    <img class="screenshot" src="/images/screenshots/scripts_browser.png"/>
+    <img class="screenshot" src="/images/screenshots/medias_browser.png"/>
 </div>
 
 @screenshots([
@@ -22,7 +22,7 @@
 ])
 @slot('item0')
 <p><strong>Add button</strong></p>
-<p>Click to open the <a href="#add-device-dialog">Add device dialog</a>.</p>
+<p>Click to open the <a href="#add-media-dialog">Add media dialog</a>.</p>
 @endslot
 @endcomponent
 

@@ -22,7 +22,7 @@
 ])
 @slot('item0')
 <p><strong>Add button</strong></p>
-<p>Click to open the <a href="#add-device-dialog">Add device dialog</a>.</p>
+<p>Click to open the <a href="#add-script-dialog">Add script dialog</a>.</p>
 @endslot
 @endcomponent
 

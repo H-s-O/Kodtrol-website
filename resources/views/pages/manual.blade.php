@@ -57,9 +57,9 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
                             <ul>
                                 <li><a href="{{ route('manual.interface.scripts') }}#scripts-browser">Scripts browser</a></li>
                                 <li><a href="{{ route('manual.interface.scripts') }}#add-script-dialog">Add script dialog</a></li>
+                                <li><a href="{{ route('manual.interface.scripts.editor') }}">Script editor</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ route('manual.interface.scripts.editor') }}">Script editor</a></li>
                         <li>
                             <p><a href="{{ route('manual.interface.medias') }}">Medias</a></p>
                             <ul>
@@ -72,14 +72,15 @@ hr { margin: 2em 0 2em 0; border: 0; border-top: 1px #AAA solid; }
                             <ul>
                                 <li><a href="{{ route('manual.interface.timelines') }}#timelines-browser">Timelines browser</a></li>
                                 <li><a href="{{ route('manual.interface.timelines') }}#add-timeline-dialog">Add timeline dialog</a></li>
+                                <li><a href="{{ route('manual.interface.timelines.editor') }}">Timeline editor</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ route('manual.interface.timelines.editor') }}">Timeline editor</a></li>
                         <li>
                             <p><a href="{{ route('manual.interface.boards') }}">Boards</a></p>
                             <ul>
                                 <li><a href="{{ route('manual.interface.boards') }}#boards-browser">Boards browser</a></li>
                                 <li><a href="{{ route('manual.interface.boards') }}#add-board-dialog">Add board dialog</a></li>
+                                <li><a href="{{ route('manual.interface.boards.editor') }}">Board editor</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ route('manual.interface.console_window') }}">Console window</a></li>
