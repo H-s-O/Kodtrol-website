@@ -31,10 +31,6 @@ var frame = function(devices) {
             'type' => 'array',
             'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
         ],
-        'data' => [
-            'type' => 'mixed',
-            'desc' => 'the current script data',
-        ],
         'blockInfo' => [
             'type' => 'object',
             'desc' => 'infos related to the scripts timing and progression',
@@ -52,25 +48,18 @@ var frame = function(devices) {
             'timeline' => true,
         ],
     ],
-    'returnType' => 'mixed',
 ])
 @slot('description')
-<p>When the script is in a timeline, this hook is continously executed on each frame for the whole duration of the script block.</p>
-<p>When the script is in a board, this hook is continously executed on each frame as long as the script block is active.</p>
-<p>When running standalone, this hook is endlessly executed on each frame.</p>
+<p>When the script is in a timeline, this hook is continuously executed on each frame for the whole duration of the script block.</p>
+<p>When the script is in a board, this hook is continuously executed on each frame as long as the script block is active.</p>
+<p>When running standalone, this hook is continuously executed on each frame.</p>
 <p>This hook is used to set and output device data.</p>
 @endslot
-@slot('returnDesc')
-<p>Optional; any value returned by this hook will be saved as script data.</p>
-@endslot
 @slot('example')
-function frame(devices, data, blockInfo, triggers, curves) {
+function frame(devices, blockInfo, triggers, curves) {
     devices.forEach((device) => {
         device.setDimmer(255);
     });
-
-    // Optionally return script data
-    // return { foo: 42 };
 }
 @endslot
 @endcomponent
@@ -84,24 +73,17 @@ function frame(devices, data, blockInfo, triggers, curves) {
             'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
         ],
     ],
-    'returnType' => 'mixed',
 ])
 @slot('description')
 <p>This hook is executed once, immediately before the first execution of any other hook.</p>
 <p>You can use this hook to prepare certain device data, before the
         actual script execution begins.</p>
 @endslot
-@slot('returnDesc')
-<p>Optional; any value returned by this hook will be saved as script data.</p>
-@endslot
 @slot('example')
-function start(devices, data, triggers, curves) {
+function start(devices) {
     devices.forEach((device) => {
         device.setDimmer(255);
     });
-
-    // Optionally return script data
-    // return { foo: 42 };
 }
 @endslot
 @endcomponent
@@ -114,10 +96,6 @@ function start(devices, data, triggers, curves) {
             'type' => 'array',
             'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
         ],
-        'data' => [
-            'type' => 'mixed',
-            'desc' => 'the current script data',
-        ],
         'blockInfo' => [
             'type' => 'object',
             'desc' => 'infos related to the scripts timing and progression',
@@ -135,25 +113,18 @@ function start(devices, data, triggers, curves) {
             'timeline' => true,
         ],
     ],
-    'returnType' => 'mixed',
 ])
 @slot('description')
-<p>When the script is in a timeline, this hook is continously executed on each frame for the whole duration of the script block.</p>
-<p>When the script is in a board, this hook is continously executed on each frame as long as the script block is active.</p>
-<p>When running standalone, this hook is endlessly executed on each frame.</p>
+<p>When the script is in a timeline, this hook is continuously executed on each frame for the lead-in duration of the script block.</p>
+<p>When the script is in a board, this hook is continuously executed on each frame for the lead-in duration of the script block after it is activated.</p>
+<p>When running standalone, this hook is <strong>not</strong> executed.</p>
 <p>This hook is used to set and output device data.</p>
 @endslot
-@slot('returnDesc')
-<p>Optional; any value returned by this hook will be saved as script data.</p>
-@endslot
 @slot('example')
-function setup(devices) {
+function leadInFrame(devices) {
     devices.forEach((device) => {
         device.setPan(127);
     });
-
-    // Optionally return script data
-    // return { foo: 1 };
 }
 @endslot
 @endcomponent
@@ -166,10 +137,6 @@ function setup(devices) {
             'type' => 'array',
             'desc' => 'the list of <a href="/devices">Devices</a> associated to the script',
         ],
-        'data' => [
-            'type' => 'mixed',
-            'desc' => 'the current script data',
-        ],
         'blockInfo' => [
             'type' => 'object',
             'desc' => 'infos related to the scripts timing and progression',
@@ -187,25 +154,18 @@ function setup(devices) {
             'timeline' => true,
         ],
     ],
-    'returnType' => 'mixed',
 ])
 @slot('description')
-<p>When the script is in a timeline, this hook is continously executed on each frame for the whole duration of the script block.</p>
-<p>When the script is in a board, this hook is continously executed on each frame as long as the script block is active.</p>
-<p>When running standalone, this hook is endlessly executed on each frame.</p>
+<p>When the script is in a timeline, this hook is continuously executed on each frame for the lead-out duration of the script block.</p>
+<p>When the script is in a board, this hook is continuously executed on each frame for the lead-out duration of the script block after it is deactivated.</p>
+<p>When running standalone, this hook is <strong>not</strong> executed.</p>
 <p>This hook is used to set and output device data.</p>
 @endslot
-@slot('returnDesc')
-<p>Optional; any value returned by this hook will be saved as script data.</p>
-@endslot
 @slot('example')
-function setup(devices) {
+function leadOutFrame(devices) {
     devices.forEach((device) => {
         device.setPan(127);
     });
-
-    // Optionally return script data
-    // return { foo: 1 };
 }
 @endslot
 @endcomponent
@@ -222,31 +182,20 @@ function setup(devices) {
             'type' => 'object',
             'desc' => 'a structure of infos related to beat progression',
         ],
-        'data' => [
-            'type' => 'mixed',
-            'desc' => 'the current script data',
-        ],
     ],
-    'returnType' => 'mixed',
 ])
 @slot('description')
 <p>This hook is executed on each 1/24th of a beat, respective of the set tempo of the timeline, board or standalone setting.</p>
-<p>Use this hook to create beat-based automations and set or alter device variables and script data; you can then use the values you set
-    in the <a href="#frame">frame()</a> hook. You cannot set device output content within this hook.</p>
-@endslot
-@slot('returnDesc')
-<p>Optional; any value returned by this hook will be saved as script data.</p>
+<p>Use this hook to create beat-based automations and set or alter global or device variables; you can then use those values
+    afterwards in the <a href="#frame">frame()</a> hook. You cannot set device output content within this hook.</p>
 @endslot
 @slot('example')
-function beat(devices, beatInfo, data) {
+function beat(devices, beatInfo) {
     if (isBeatDivision(beatInfo.localBeat, 24)) {
         devices.forEach((device) => {
             device.setVar('flash', true);
         });
     }
-
-    // Optionally return script data
-    // return { foo: 42 };
 }
 @endslot
 @endcomponent
@@ -267,23 +216,15 @@ function beat(devices, beatInfo, data) {
             'type' => 'object',
             'desc' => 'a structure of infos related to the received input',
         ],
-        'data' => [
-            'type' => 'mixed',
-            'desc' => 'the current script data',
-        ],
     ],
-    'returnType' => 'mixed',
 ])
 @slot('description')
 <p>This hook is executed each time input content is received from any of your active inputs.</p>
-<p>Use this hook to create interactive automations and set or alter device variables and script data; you can then use the values you set
-    in the <a href="#frame">frame()</a> hook. You cannot set device output content within this hook.</p>
-@endslot
-@slot('returnDesc')
-<p>Optional; any value returned by this hook will be saved as script data.</p>
+<p>Use this hook to create interactive automations and set or alter global or device variables; you can then use those values
+    afterwards in the <a href="#frame">frame()</a> hook. You cannot set device output content within this hook.</p>
 @endslot
 @slot('example')
-function input(devices, inputType, inputData, data) {
+function input(devices, inputType, inputData) {
     if (inputType === 'midi') {
         if (inputData.getNoteOn()) {
             devices.forEach((device) => {
@@ -291,9 +232,6 @@ function input(devices, inputType, inputData, data) {
             });
         }
     }
-
-    // Optionally return script data
-    // return { foo: 42 };
 }
 @endslot
 @endcomponent
