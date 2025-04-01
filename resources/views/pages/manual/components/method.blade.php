@@ -2,9 +2,9 @@
     <div class="method-def">
         <code class="method-signature">
             <span class="func">{{ $name }}</span>
-            (@foreach ($args as $arg => $argInfo)
+            (@isset($args) @foreach ($args as $arg => $argInfo)
             <span class="var">{{ $arg }}</span>@if (!$loop->last),@endif
-            @endforeach)
+            @endforeach @endif)
         </code>
         @isset($description)
         <p class="method-desc">{{ $description }}</p>
@@ -12,6 +12,7 @@
     </div>
     <div class="def-table-container">
         <table>
+            @isset($args)
             <tr>
                 <td>Arguments</td>
                 <td>
@@ -35,6 +36,7 @@
                     </ul>
                 </td>
             </tr>
+            @endif
             @isset($returnType)
             <tr>
                 <td>Return value</td>
