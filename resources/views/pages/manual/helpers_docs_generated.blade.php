@@ -3,19 +3,10 @@
 <a name="clamp"></a>
 @method(["name" => "clamp","description" => "Ensures that an input value is within the range of minimum and maximum values.","args" => ["value" => ["type" => "Number", "desc" => "The number to clamp"],"min" => ["type" => "Number", "desc" => "The minimum value possible"],"max" => ["type" => "Number", "desc" => "The maximum value possible"],],"returnType" => "Number",])
 @slot("returnDesc")
-<p>If <code>value</code> is smaller than <code>min</code>, return <code>min</code>.
-If <code>value</code> is greater than <code>max</code>, return <code>max</code>.
-Otherwise, returns <code>value</code>.</p>
+<p>If <code>value</code> is smaller than <code>min</code>, return <code>min</code>.If <code>value</code> is greater than <code>max</code>, return <code>max</code>.Otherwise, returns <code>value</code>.</p>
 @endslot
 @slot("example")
-clamp(1, 2, 6)
-// Returns 2
-
-clamp(10, 2, 6)
-// Returns 6
-
-clamp(-42, -100, 0)
-// Return -42
+clamp(1, 2, 6)// Returns 2clamp(10, 2, 6)// Returns 6clamp(-42, -100, 0)// Return -42
 @endslot
 @endcomponent
 
@@ -32,16 +23,12 @@ clamp(-42, -100, 0)
 <p>The current counter value</p>
 @endslot
 @slot("example")
-let myCounter = counter()
-// myCounter = 0
-myCounter = counter()
-// myCounter = 1
+let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 1
 @endslot
 @endcomponent
 
 <a name="counterLimit"></a>
-@method(["name" => "counterLimit","description" => "Creates a counter (if it doesn't exist yet) that increments by 1 everytime the function is called, and
-returns true when it reaches or exceeds the limit value.","args" => ["limit" => ["type" => "Number", "desc" => "The limit to reach"],"id" => ["type" => "String", "desc" => "The counter identifier, when using more than one counter per script"],],"returnType" => "Boolean",])
+@method(["name" => "counterLimit","description" => "Creates a counter (if it doesn't exist yet) that increments by 1 everytime the function is called, andreturns true when it reaches or exceeds the limit value.","args" => ["limit" => ["type" => "Number", "desc" => "The limit to reach"],"id" => ["type" => "String", "desc" => "The counter identifier, when using more than one counter per script"],],"returnType" => "Boolean",])
 @slot("returnDesc")
 <p><code>true</code> when the counter value is equal or greater than <code>limit</code>, <code>false</code> otherwise.</p>
 @endslot
@@ -272,17 +259,20 @@ returns true when it reaches or exceeds the limit value.","args" => ["limit" => 
 @endslot
 @endcomponent
 
+<a name="isBeatDivision"></a>
+@method(["name" => "isBeatDivision","description" => "Check if a pulse-per-quarter-note value from Kodtrol's engine is divisible by a value.","args" => ["beat" => ["type" => "Number", "desc" => "The pulse-per-quarter-note value"],"division" => ["type" => "Number", "desc" => "The divider"],"allowFirst" => ["type" => "Boolean", "desc" => "Only return true for <code>beat</code> values higher than 0"],],"returnType" => "Boolean",])
+@slot("returnDesc")
+<p>Returns true if the pulse-per-quarter-note is divisible, false otherwise.</p>
+@endslot
+@endcomponent
+
 <a name="isEven"></a>
 @method(["name" => "isEven","args" => ["value" => ["type" => "Number", "desc" => "The number to check"],],"returnType" => "Boolean",])
 @slot("returnDesc")
 <p>Returns <code>true</code> if <code>value</code> is even, <code>false</code> otherwise.</p>
 @endslot
 @slot("example")
-isEven(1)
-// Returns false
-
-isEven(2)
-// Returns true
+isEven(1)// Returns falseisEven(2)// Returns true
 @endslot
 @endcomponent
 
@@ -292,22 +282,14 @@ isEven(2)
 <p>Returns <code>true</code> if <code>value</code> is odd, <code>false</code> otherwise.</p>
 @endslot
 @slot("example")
-isEven(1)
-// Returns true
-
-isEven(2)
-// Returns false
+isEven(1)// Returns trueisEven(2)// Returns false
 @endslot
 @endcomponent
 
 <a name="log"></a>
 @method(["name" => "log","description" => "Sends data to Kodtrol's console window.","args" => ["args" => ["type" => "*", "desc" => "The data to log; each argument will be cast to a string."],],])
 @slot("example")
-log("Hello World")
-// Displays "Hello World" in the console window
-
-log(1, 2, 3, "four", 5)
-// Displays "1 2 3 four 5" in the console window
+log("Hello World")// Displays "Hello World" in the console windowlog(1, 2, 3, "four", 5)// Displays "1 2 3 four 5" in the console window
 @endslot
 @endcomponent
 
@@ -316,6 +298,28 @@ log(1, 2, 3, "four", 5)
 @slot("returnDesc")
 <p>The lower byte value of the input value</p>
 @endslot
+@endcomponent
+
+<a name="map"></a>
+@method(["name" => "map","description" => "Using a source value and its known range, re-maps that value to a new target range. Note that the result is <strong>not</strong> clamped, so you may end up with under or over-shooting output values.","args" => ["value" => ["type" => "Number", "desc" => "The input value"],"valueMin" => ["type" => "Number", "desc" => "The minimum value of the input range"],"valueMax" => ["type" => "Number", "desc" => "The maximum value of the input range"],"outMin" => ["type" => "Number", "desc" => "The minimum value of the output range"],"outMax" => ["type" => "Number", "desc" => "The maximum value of the output range"],],"returnType" => "Number",])
+@slot("returnDesc")
+<p>The mapped value</p>
+@endslot
+@slot("example")
+map(75, 50, 100, 0, 1)// Returns 0.5map(0.5, 0, 1, 0, 100)// Returns 50
+@endslot
+@endcomponent
+
+<a name="onceWhenFalse"></a>
+@method(["name" => "onceWhenFalse","description" => "Invokes a callback only once when the checked <code>value</code> is false.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
+@endcomponent
+
+<a name="onceWhenTrue"></a>
+@method(["name" => "onceWhenTrue","description" => "Invokes a callback only once when the checked <code>value</code> is true.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
+@endcomponent
+
+<a name="onceWhenZero"></a>
+@method(["name" => "onceWhenZero","description" => "Invokes a callback only once when the checked <code>value</code> is 0.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
 @endcomponent
 
 <a name="radToDeg"></a>
@@ -329,6 +333,20 @@ log(1, 2, 3, "four", 5)
 @method(["name" => "randomTrueFalse","args" => ["bias" => ["type" => "Number", "desc" => "Adjust probability bias; a value closer to <code>0</code> will result in more <code>true</code>s a value close to <code>1</code> will result in more <code>false</code>s."],],"returnType" => "Boolean",])
 @slot("returnDesc")
 <p>A random <code>true</code> or <code>false</code>.</p>
+@endslot
+@endcomponent
+
+<a name="rgbColor"></a>
+@method(["name" => "rgbColor","description" => "Creates an object with keys containing the values of RGB color components.","args" => ["r" => ["type" => "Number", "desc" => "The red value"],"g" => ["type" => "Number", "desc" => "The green value"],"b" => ["type" => "Number", "desc" => "The blue value"],],"returnType" => "Object",])
+@slot("returnDesc")
+<p>An object containing the matching <code>r</code>, <code>g</code>, and <code>b</code> keys from the parameters.</p>
+@endslot
+@endcomponent
+
+<a name="rgbToCmyk"></a>
+@method(["name" => "rgbToCmyk","args" => ["rgb" => ["type" => "Object", "desc" => "An RGB color object"],],"returnType" => "Object",])
+@slot("returnDesc")
+<p>The CMYK color object of the converted <code>rgb</code> color</p>
 @endslot
 @endcomponent
 
