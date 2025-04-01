@@ -18,7 +18,7 @@
 .method-desc { margin-bottom: 0; margin-top: 1em; }
 .code-example { white-space:pre; display:block; padding: 1em; background-color: #EEE; }
 .args-list { margin: 0; padding-left: 1em; }
-.type { font-style: italic; color:darkorange; }
+.type { font-style: italic; color:darkmagenta; }
 .var { color:darkslategrey; }
 .func { color:darkred; }
 .screenshot { width: auto; max-height: 400px; }
