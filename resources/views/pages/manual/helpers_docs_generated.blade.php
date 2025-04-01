@@ -26,6 +26,35 @@ clamp(-42, -100, 0)
 @endslot
 @endcomponent
 
+<a name="counter"></a>
+@method(["name" => "counter","description" => "Creates a counter (if it doesn't exist yet) that increments by 1 everytime the function is called.","args" => ["id" => ["type" => "String", "desc" => "The counter identifier, when using more than one counter per script"],],"returnType" => "Number",])
+@slot("returnDesc")
+<p>The current counter value</p>
+@endslot
+@slot("example")
+let myCounter = counter()
+// myCounter = 0
+myCounter = counter()
+// myCounter = 1
+@endslot
+@endcomponent
+
+<a name="counterLimit"></a>
+@method(["name" => "counterLimit","description" => "Creates a counter (if it doesn't exist yet) that increments by 1 everytime the function is called, and
+returns true when it reaches or exceeds the limit value.","args" => ["limit" => ["type" => "Number", "desc" => "The limit to reach"],"id" => ["type" => "String", "desc" => "The counter identifier, when using more than one counter per script"],],"returnType" => "Boolean",])
+@slot("returnDesc")
+<p><code>true</code> when the counter value is equal or greater than <code>limit</code>, <code>false</code> otherwise.</p>
+@endslot
+@endcomponent
+
+<a name="counterReset"></a>
+@method(["name" => "counterReset","description" => "Resets a counter to its initial value of 0.","args" => ["id" => ["type" => "String", "desc" => "The counter identifier, when using more than one counter per script"],],])
+@endcomponent
+
+<a name="counterResetAll"></a>
+@method(["name" => "counterResetAll","description" => "Resets all the script's counters to their initial value of 0.",])
+@endcomponent
+
 <a name="easeInBack"></a>
 @method(["name" => "easeInBack","description" => "Generates a \"back overshoot\" easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")

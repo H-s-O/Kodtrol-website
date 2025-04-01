@@ -37,7 +37,7 @@ class GenerateHelpersPage extends Command
      */
     public function handle()
     {
-        $docFilePath = base_path() . '/../app/dev/helpers_doc.json';
+        $docFilePath = base_path() . '/../Kodtrol/dev/helpers_doc.json';
         if (!file_exists($docFilePath)) {
             $this->error('Helpers doc file not found at '.$docFilePath);
             return;
