@@ -72,7 +72,7 @@ class GenerateHelpersPage extends Command
             }
             if (isset($functionData->params)) {
                 $functionTemplate .= array_reduce($functionData->params, function($template, $paramData) {
-                    $paramTemplate = '"'.$paramData->name.'" => ["type" => "'.$paramData->type->names[0].'", "desc" => "'.$this->codify($paramData->description).'"],';
+                    $paramTemplate = '"'.$paramData->name.'" => ["type" => "'.$paramData->type->names[0].'", "desc" => '.(isset($paramData->description) ? '"'.$this->codify($paramData->description).'"' : 'null').'],';
                     return $template.$paramTemplate;
                 }, '"args" => [');
                 $functionTemplate .= '],';
@@ -81,7 +81,7 @@ class GenerateHelpersPage extends Command
                 $functionTemplate .= '"returnType" => "'.$this->codify($functionData->returns[0]->type->names[0]).'",';
             }
             $functionTemplate .= '])'."\n";
-            if (isset($functionData->returns)) {
+            if (isset($functionData->returns[0]->description)) {
                 $functionTemplate .= '@slot("returnDesc")'."\n".'<p>'.$this->codify($functionData->returns[0]->description).'</p>'."\n".'@endslot'."\n";
             }
             if (isset($functionData->examples)) {
