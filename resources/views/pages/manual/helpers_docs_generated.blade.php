@@ -11,7 +11,7 @@ clamp(1, 2, 6)// Returns 2clamp(10, 2, 6)// Returns 6clamp(-42, -100, 0)/
 @endcomponent
 
 <a name="cmykColor"></a>
-@method(["name" => "cmykColor","description" => "Creates an object with keys containing the values of CMYK color components.","args" => ["c" => ["type" => "Number", "desc" => "The cyan value"],"m" => ["type" => "Number", "desc" => "The magenta value"],"y" => ["type" => "Number", "desc" => "The yellow value"],"k" => ["type" => "Number", "desc" => "The black value"],],"returnType" => "Object",])
+@method(["name" => "cmykColor","description" => "Creates a color object with keys containing the values of CMYK color components.","args" => ["c" => ["type" => "Number", "desc" => "The cyan value"],"m" => ["type" => "Number", "desc" => "The magenta value"],"y" => ["type" => "Number", "desc" => "The yellow value"],"k" => ["type" => "Number", "desc" => "The black value"],],"returnType" => "Object",])
 @slot("returnDesc")
 <p>An object containing the matching <code>c</code>, <code>m</code>, <code>y</code> and <code>k</code> keys from the parameters.</p>
 @endslot
@@ -32,6 +32,9 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @slot("returnDesc")
 <p><code>true</code> when the counter value is equal or greater than <code>limit</code>, <code>false</code> otherwise.</p>
 @endslot
+@slot("example")
+let result = counterLimit(2)// result = falseresult = counterLimit(2)// result = falseresult = counterLimit(2)// result = true
+@endslot
 @endcomponent
 
 <a name="counterReset"></a>
@@ -42,8 +45,15 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @method(["name" => "counterResetAll","description" => "Resets all the script's counters to their initial value of 0.",])
 @endcomponent
 
+<a name="degToRad"></a>
+@method(["name" => "degToRad","description" => "Converts a value in degrees to a value in radians.","args" => ["degrees" => ["type" => "Number", "desc" => "The input value in degrees"],],"returnType" => "Number",])
+@slot("returnDesc")
+<p>The corresponding value in radians</p>
+@endslot
+@endcomponent
+
 <a name="easeInBack"></a>
-@method(["name" => "easeInBack","description" => "Generates a \"back overshoot\" easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInBack","description" => "Generates a \"overshoot\" easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -64,7 +74,7 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @endcomponent
 
 <a name="easeInCubic"></a>
-@method(["name" => "easeInCubic","description" => "Generates a cubic easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInCubic","description" => "Generates a cubic (3rd order) easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -85,7 +95,7 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @endcomponent
 
 <a name="easeInOutBack"></a>
-@method(["name" => "easeInOutBack","description" => "Generates a \"back overshoot\" easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInOutBack","description" => "Generates a \"overshoot\" easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -106,7 +116,7 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @endcomponent
 
 <a name="easeInOutCubic"></a>
-@method(["name" => "easeInOutCubic","description" => "Generates a cubic easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInOutCubic","description" => "Generates a cubic (3rd order) easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -127,21 +137,21 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @endcomponent
 
 <a name="easeInOutQuad"></a>
-@method(["name" => "easeInOutQuad","description" => "Generates a quad easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInOutQuad","description" => "Generates a quadratic (2nd order) easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
 @endcomponent
 
 <a name="easeInOutQuart"></a>
-@method(["name" => "easeInOutQuart","description" => "Generates a quart easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInOutQuart","description" => "Generates a quartic (4th order) easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
 @endcomponent
 
 <a name="easeInOutQuint"></a>
-@method(["name" => "easeInOutQuint","description" => "Generates a quint easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInOutQuint","description" => "Generates a quintic (5th order) easing at both start and end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -155,21 +165,21 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @endcomponent
 
 <a name="easeInQuad"></a>
-@method(["name" => "easeInQuad","description" => "Generates a quad easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInQuad","description" => "Generates a quadratic (2nd order) easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
 @endcomponent
 
 <a name="easeInQuart"></a>
-@method(["name" => "easeInQuart","description" => "Generates a quart easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInQuart","description" => "Generates a quartic (4th order) easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
 @endcomponent
 
 <a name="easeInQuint"></a>
-@method(["name" => "easeInQuint","description" => "Generates a quint easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeInQuint","description" => "Generates a quintic (5th order) easing at start of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -204,7 +214,7 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @endcomponent
 
 <a name="easeOutCubic"></a>
-@method(["name" => "easeOutCubic","description" => "Generates a cubic easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeOutCubic","description" => "Generates a cubic (3rd order) easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -225,21 +235,21 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @endcomponent
 
 <a name="easeOutQuad"></a>
-@method(["name" => "easeOutQuad","description" => "Generates a quad easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeOutQuad","description" => "Generates a quadratic (2nd order) easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
 @endcomponent
 
 <a name="easeOutQuart"></a>
-@method(["name" => "easeOutQuart","description" => "Generates a quart easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeOutQuart","description" => "Generates a quartic (4th order) easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
 @endcomponent
 
 <a name="easeOutQuint"></a>
-@method(["name" => "easeOutQuint","description" => "Generates a quint easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
+@method(["name" => "easeOutQuint","description" => "Generates a quintic (5th order) easing at end of period.","args" => ["progress" => ["type" => "Number", "desc" => "The normalized progress value, from <code>0</code> to <code>1</code>"],],"returnType" => "Number",])
 @slot("returnDesc")
 <p>An eased, normalized value from <code>0</code> to <code>1</code>.</p>
 @endslot
@@ -271,18 +281,12 @@ let myCounter = counter()// myCounter = 0myCounter = counter()// myCounter = 
 @slot("returnDesc")
 <p>Returns <code>true</code> if <code>value</code> is even, <code>false</code> otherwise.</p>
 @endslot
-@slot("example")
-isEven(1)// Returns falseisEven(2)// Returns true
-@endslot
 @endcomponent
 
 <a name="isOdd"></a>
 @method(["name" => "isOdd","args" => ["value" => ["type" => "Number", "desc" => "The number to check"],],"returnType" => "Boolean",])
 @slot("returnDesc")
 <p>Returns <code>true</code> if <code>value</code> is odd, <code>false</code> otherwise.</p>
-@endslot
-@slot("example")
-isEven(1)// Returns trueisEven(2)// Returns false
 @endslot
 @endcomponent
 
@@ -310,16 +314,40 @@ map(75, 50, 100, 0, 1)// Returns 0.5map(0.5, 0, 1, 0, 100)// Returns 50
 @endslot
 @endcomponent
 
+<a name="mix"></a>
+@method(["name" => "mix","args" => ["a" => ["type" => "Number", "desc" => null],"b" => ["type" => "Number", "desc" => null],"percent" => ["type" => "Number", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="noise"></a>
+@method(["name" => "noise","args" => ["id" => ["type" => "String", "desc" => null],"seed" => ["type" => "*", "desc" => null],],"returnType" => "*",])
+@endcomponent
+
+<a name="noise2d"></a>
+@method(["name" => "noise2d","args" => ["x" => ["type" => "Number", "desc" => null],"y" => ["type" => "Number", "desc" => null],"id" => ["type" => "String", "desc" => null],"seed" => ["type" => "*", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="noise3d"></a>
+@method(["name" => "noise3d","args" => ["x" => ["type" => "Number", "desc" => null],"y" => ["type" => "Number", "desc" => null],"z" => ["type" => "Number", "desc" => null],"id" => ["type" => "String", "desc" => null],"seed" => ["type" => "*", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="noise4d"></a>
+@method(["name" => "noise4d","args" => ["x" => ["type" => "Number", "desc" => null],"y" => ["type" => "Number", "desc" => null],"z" => ["type" => "Number", "desc" => null],"w" => ["type" => "Number", "desc" => null],"id" => ["type" => "String", "desc" => null],"seed" => ["type" => "*", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
 <a name="onceWhenFalse"></a>
-@method(["name" => "onceWhenFalse","description" => "Invokes a callback only once when the checked <code>value</code> is false.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
+@method(["name" => "onceWhenFalse","description" => "Invokes a callback once for each time that the checked <code>value</code> becomes <code>false</code>.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
+@endcomponent
+
+<a name="onceWhenOne"></a>
+@method(["name" => "onceWhenOne","description" => "Invokes a callback once for each time that the checked <code>value</code> becomes exactly <code>1</code>.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
 @endcomponent
 
 <a name="onceWhenTrue"></a>
-@method(["name" => "onceWhenTrue","description" => "Invokes a callback only once when the checked <code>value</code> is true.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
+@method(["name" => "onceWhenTrue","description" => "Invokes a callback once for each time that the checked <code>value</code> becomes <code>true</code>.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
 @endcomponent
 
 <a name="onceWhenZero"></a>
-@method(["name" => "onceWhenZero","description" => "Invokes a callback only once when the checked <code>value</code> is 0.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
+@method(["name" => "onceWhenZero","description" => "Invokes a callback once for each time that the checked <code>value</code> becomes exactly <code>0</code>.","args" => ["value" => ["type" => "*", "desc" => "The value to check"],"id" => ["type" => "String", "desc" => "The identifier for the check"],"callback" => ["type" => "function", "desc" => "The function to be invoked when the check succeeds"],],])
 @endcomponent
 
 <a name="radToDeg"></a>
@@ -329,6 +357,18 @@ map(75, 50, 100, 0, 1)// Returns 0.5map(0.5, 0, 1, 0, 100)// Returns 50
 @endslot
 @endcomponent
 
+<a name="randomBetween"></a>
+@method(["name" => "randomBetween","args" => ["min" => ["type" => "Number", "desc" => null],"max" => ["type" => "Number", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="randomIndex"></a>
+@method(["name" => "randomIndex","args" => ["arr" => ["type" => "Array", "desc" => null],"except" => ["type" => "*", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="randomIndexWhere"></a>
+@method(["name" => "randomIndexWhere","args" => ["arr" => ["type" => "Array", "desc" => null],"predicate" => ["type" => "function", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
 <a name="randomTrueFalse"></a>
 @method(["name" => "randomTrueFalse","args" => ["bias" => ["type" => "Number", "desc" => "Adjust probability bias; a value closer to <code>0</code> will result in more <code>true</code>s a value close to <code>1</code> will result in more <code>false</code>s."],],"returnType" => "Boolean",])
 @slot("returnDesc")
@@ -336,11 +376,27 @@ map(75, 50, 100, 0, 1)// Returns 0.5map(0.5, 0, 1, 0, 100)// Returns 50
 @endslot
 @endcomponent
 
+<a name="randomValue"></a>
+@method(["name" => "randomValue","args" => ["arr" => ["type" => "Array", "desc" => null],"except" => ["type" => "*", "desc" => null],],"returnType" => "*",])
+@endcomponent
+
+<a name="randomValueWhere"></a>
+@method(["name" => "randomValueWhere","args" => ["arr" => ["type" => "Array", "desc" => null],"predicate" => ["type" => "function", "desc" => null],],"returnType" => "*",])
+@endcomponent
+
 <a name="rgbColor"></a>
-@method(["name" => "rgbColor","description" => "Creates an object with keys containing the values of RGB color components.","args" => ["r" => ["type" => "Number", "desc" => "The red value"],"g" => ["type" => "Number", "desc" => "The green value"],"b" => ["type" => "Number", "desc" => "The blue value"],],"returnType" => "Object",])
+@method(["name" => "rgbColor","description" => "Creates a color object with keys containing the values of RGB color components.","args" => ["r" => ["type" => "Number", "desc" => "The red value"],"g" => ["type" => "Number", "desc" => "The green value"],"b" => ["type" => "Number", "desc" => "The blue value"],],"returnType" => "Object",])
 @slot("returnDesc")
 <p>An object containing the matching <code>r</code>, <code>g</code>, and <code>b</code> keys from the parameters.</p>
 @endslot
+@endcomponent
+
+<a name="rgbFromHsv"></a>
+@method(["name" => "rgbFromHsv","args" => ["h" => ["type" => "Number", "desc" => null],"s" => ["type" => "Number", "desc" => null],"v" => ["type" => "Number", "desc" => null],],"returnType" => "Object",])
+@endcomponent
+
+<a name="rgbMix"></a>
+@method(["name" => "rgbMix","args" => ["color1" => ["type" => "Object", "desc" => null],"color2" => ["type" => "Object", "desc" => null],"percent" => ["type" => "Number", "desc" => null],],"returnType" => "Object",])
 @endcomponent
 
 <a name="rgbToCmyk"></a>
@@ -348,5 +404,69 @@ map(75, 50, 100, 0, 1)// Returns 0.5map(0.5, 0, 1, 0, 100)// Returns 50
 @slot("returnDesc")
 <p>The CMYK color object of the converted <code>rgb</code> color</p>
 @endslot
+@endcomponent
+
+<a name="sequence"></a>
+@method(["name" => "sequence","args" => ["arr" => ["type" => "Array", "desc" => null],"id" => ["type" => "String", "desc" => null],],"returnType" => "*",])
+@endcomponent
+
+<a name="sequenceIndex"></a>
+@method(["name" => "sequenceIndex","args" => ["id" => ["type" => "String", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="sequenceReset"></a>
+@method(["name" => "sequenceReset","args" => ["id" => ["type" => "String", "desc" => null],],])
+@endcomponent
+
+<a name="smoothFollow"></a>
+@method(["name" => "smoothFollow","args" => ["device" => ["type" => "*", "desc" => null],"varName" => ["type" => "String", "desc" => null],"divider" => ["type" => "Number", "desc" => null],"value" => ["type" => "*", "desc" => null],"initValue" => ["type" => "*", "desc" => null],],"returnType" => "*",])
+@endcomponent
+
+<a name="smoothReset"></a>
+@method(["name" => "smoothReset","args" => ["device" => ["type" => "*", "desc" => null],"varName" => ["type" => "String", "desc" => null],"value" => ["type" => "*", "desc" => null],],"returnType" => "*",])
+@endcomponent
+
+<a name="smoothValue"></a>
+@method(["name" => "smoothValue","args" => ["device" => ["type" => "*", "desc" => null],"varName" => ["type" => "String", "desc" => null],],"returnType" => "*",])
+@endcomponent
+
+<a name="smoothVarName"></a>
+@method(["name" => "smoothVarName","args" => ["device" => ["type" => "*", "desc" => null],"varName" => ["type" => "String", "desc" => null],],"returnType" => "String",])
+@endcomponent
+
+<a name="square"></a>
+@method(["name" => "square","args" => ["x" => ["type" => "Number", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="step"></a>
+@method(["name" => "step","args" => ["value" => ["type" => "Number", "desc" => null],"step" => ["type" => "Number", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="timer"></a>
+@method(["name" => "timer","args" => ["id" => ["type" => "String", "desc" => null],],])
+@endcomponent
+
+<a name="timerValue"></a>
+@method(["name" => "timerValue","args" => ["id" => ["type" => "String", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="timerLimit"></a>
+@method(["name" => "timerLimit","args" => ["limit" => ["type" => "Number", "desc" => null],"id" => ["type" => "String", "desc" => null],],"returnType" => "Boolean",])
+@endcomponent
+
+<a name="timerReset"></a>
+@method(["name" => "timerReset","args" => ["id" => ["type" => "String", "desc" => null],],])
+@endcomponent
+
+<a name="timerResetAll"></a>
+@method(["name" => "timerResetAll",])
+@endcomponent
+
+<a name="tri"></a>
+@method(["name" => "tri","args" => ["x" => ["type" => "Number", "desc" => null],],"returnType" => "Number",])
+@endcomponent
+
+<a name="wave"></a>
+@method(["name" => "wave","args" => ["position" => ["type" => "Number", "desc" => null],"percent" => ["type" => "Number", "desc" => null],"frequency" => ["type" => "Number", "desc" => null],"func" => ["type" => "function", "desc" => null],],"returnType" => "Number",])
 @endcomponent
 

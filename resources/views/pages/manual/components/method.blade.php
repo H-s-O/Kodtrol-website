@@ -7,7 +7,7 @@
             @endforeach @endif)
         </code>
         @isset($description)
-        <p class="method-desc">{{ $description }}</p>
+        <p class="method-desc">{!! $description !!}</p>
         @endif
     </div>
     <div class="def-table-container">
